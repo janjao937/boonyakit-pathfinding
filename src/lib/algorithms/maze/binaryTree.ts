@@ -39,4 +39,5 @@ export const binaryTree=async(
             }
         }
     }
+    setIsDisabled(false);
 }

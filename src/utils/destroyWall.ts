@@ -19,7 +19,7 @@ export const destroyWall = async(
         await sleep(20*SPEEDS.find((e)=>e.value===speed)!.value-5);
     }else{
         grid[row][col].isWall = false;
-        document.getElementById(`${row+1}-${col}`)!.className = TILE_STYLE;
+        document.getElementById(`${row}-${col}`)!.className = TILE_STYLE;
         await sleep(20*SPEEDS.find((e)=>e.value===speed)!.value-5);
     }
 
