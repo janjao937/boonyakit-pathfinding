@@ -4,6 +4,10 @@ export interface MazeSelectType{
     name:string;
     value:MazeType;
 }
+export interface AlgorithmSelectType{
+    name:string;
+    value:AlgorithmType;
+}
 export type TileType = {
     row:number;
     col:number;
