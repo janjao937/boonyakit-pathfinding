@@ -68,12 +68,14 @@ export const Nav = ({isVisualizationRunningRef}:{
                 value={maze}
                 option={MAZES}
                 onChange={(e)=>{handleGenerateMaze(e.target.value as MazeType)}}
+                isDisabled={isDisabled}
                 />
                 <Select 
                 label="Graph"
                 value={algorithm}
                 option={PATHFINDING_ALGORITHMS}
                 onChange={(e)=>{setAlgorithm(e.target.value as AlgorithmType)}}
+                isDisabled = {isDisabled}
                 />
 
                 <Select
@@ -83,6 +85,7 @@ export const Nav = ({isVisualizationRunningRef}:{
                 onChange={(e)=>{
                     setSpeed(parseInt(e.target.value) as SpeedType);
                 }}
+                isDisabled={isDisabled}
                 />
 
 

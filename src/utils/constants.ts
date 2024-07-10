@@ -1,4 +1,4 @@
-import { AlgorithmSelectType, MazeSelectType, MazeType,SpeedSelectType } from "./types";
+import { AlgorithmSelectType, MazeSelectType,SpeedSelectType } from "./types";
 
 export const MAX_ROWS = 39;
 export const MAX_COLS=49;
