@@ -3,7 +3,7 @@ import { usePathfinding } from "../hooks/usePathfinding"
 import { useTile } from "../hooks/useTile";
 import { EXTENDED_SLEEP_TIME, MAZES, PATHFINDING_ALGORITHMS, SLEEP_TIME, SPEEDS } from "../utils/constants";
 import { resetGrid } from "../utils/resetGrid";
-import { AlgorithmType, MazeType } from "../utils/types";
+import { AlgorithmType, MazeType, SpeedType } from "../utils/types";
 import { Select } from "./Select"
 import { runMazeAlgorithm } from "../utils/runMazeAlgorithm";
 import { useSpeed } from "../hooks/useSpeed";
@@ -16,7 +16,7 @@ export const Nav = ({isVisualizationRunningRef}:{
 })=>{
     const {maze,setMaze,grid,setGrid,setIsGraphVisualized,setAlgorithm,algorithm,isGraphVisualized} = usePathfinding();
     const {startTile,endTile} = useTile();
-    const {speed} = useSpeed();
+    const {speed,setSpeed} = useSpeed();
     const [isDisabled,setIsDisabled] = useState(false);
 
     const handleGenerateMaze = (maze:MazeType)=>{
@@ -47,6 +47,7 @@ export const Nav = ({isVisualizationRunningRef}:{
         isVisualizationRunningRef.current = true;
         setTimeout(()=>{
             const newGrid = grid.slice();
+            setGrid(newGrid);
             setIsGraphVisualized(true);
             setIsDisabled(false);
             isVisualizationRunningRef.current = false;
@@ -74,6 +75,17 @@ export const Nav = ({isVisualizationRunningRef}:{
                 option={PATHFINDING_ALGORITHMS}
                 onChange={(e)=>{setAlgorithm(e.target.value as AlgorithmType)}}
                 />
+
+                <Select
+                label="Speed"
+                value={speed}
+                option={SPEEDS}
+                onChange={(e)=>{
+                    setSpeed(parseInt(e.target.value) as SpeedType);
+                }}
+                />
+
+
                 <PlayButton isDisabled= {isDisabled} isGraphVisualized={isGraphVisualized} handlerRunVisalizer={handlerRunVisalizer} />
                 </div>
             </div>
